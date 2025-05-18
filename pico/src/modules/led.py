@@ -6,9 +6,8 @@ class Led:
         self._led = machine.Pin(self._pin, machine.Pin.OUT)
         self._timer = machine.Timer() # type: ignore
         
-    def setup(self):
-        print("Setup LED")
         self._timer.init(period=1000, mode=machine.Timer.PERIODIC, callback=self._toggle_led)
+        print("Setup LED complete")
 
     def loop(self):
         pass

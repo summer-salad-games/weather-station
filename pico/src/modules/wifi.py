@@ -6,9 +6,8 @@ class Wifi:
         self._password = password
         self._wlan = network.WLAN(network.STA_IF)
 
-    def setup(self):
-        print("Setup Wifi")
         self.connect()
+        print("Setup Wifi")
 
     def loop(self):
         pass
