@@ -1,8 +1,7 @@
 import machine
-import time
 from src.utils.math_utils import MathUtils
 
-class Ldr:
+class LDR:
     def __init__(self, pin=26, max_value=64900, min_value=250):
         self._max_value = max_value
         self._min_value = min_value

@@ -4,13 +4,17 @@ class Led:
     def __init__(self, pin="LED"):
         self._pin = pin
         self._led = machine.Pin(self._pin, machine.Pin.OUT)
-        self._timer = machine.Timer() # type: ignore
         
-        self._timer.init(period=1000, mode=machine.Timer.PERIODIC, callback=self._toggle_led)
         print("Setup LED complete")
 
     def loop(self):
         pass
 
-    def _toggle_led(self, timer):
+    def on(self):
+        self._led.on()
+
+    def off(self):
+        self._led.off()
+
+    def toggle(self):
         self._led.toggle()
