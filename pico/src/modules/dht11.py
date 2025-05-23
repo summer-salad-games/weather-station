@@ -12,10 +12,12 @@ class DHT11:
     def loop(self):
         pass
 
+    @property
     def temperature(self):
         self._measure()
         return self._sensor.temperature()
 
+    @property
     def humidity(self):
         self._measure()
         return self._sensor.humidity()

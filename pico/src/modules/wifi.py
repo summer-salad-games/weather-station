@@ -7,7 +7,7 @@ class Wifi:
         self._wlan = network.WLAN(network.STA_IF)
 
         self.connect()
-        print("Setup Wifi")
+        print("Setup Wifi complete")
 
     def loop(self):
         pass
@@ -15,11 +15,11 @@ class Wifi:
     def connect(self, timeout=10):
         self._wlan.active(True)
 
-        if not self.is_connected():
+        if not self.is_connected:
             print(f'Connecting to network {self._ssid}')
             self._wlan.connect(self._ssid, self._password)
             start = time.ticks_ms()
-            while not self.is_connected():
+            while not self.is_connected:
                 if time.ticks_diff(time.ticks_ms(), start) > timeout * 1000:
                     print("Connection timed out")
                     return
@@ -36,5 +36,6 @@ class Wifi:
         else:
             print("No active Wi-Fi connection to disconnect")
 
+    @property
     def is_connected(self):
         return self._wlan.isconnected()

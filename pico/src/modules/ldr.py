@@ -12,7 +12,8 @@ class LDR:
     def loop(self):
         pass
 
-    def get_brightness(self):
+    @property
+    def brightness(self):
         raw = self._adc.read_u16()
         brightness = MathUtils.map(raw, self._min_value, self._max_value, flipped=True)
         return int(brightness)

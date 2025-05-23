@@ -1,8 +1,9 @@
+MAKE := make
 PICO_DIR := pico
 MPREMOTE := mpremote
 MAIN_SCRIPT := main.py
 
-.PHONY: deploy clean hard-reset soft-reset repl ls mount unmount
+.PHONY: deploy clean hard-reset soft-reset repl ls mount unmount reset
 
 deploy:
 	@echo "Deploy to Pico"
@@ -35,3 +36,10 @@ mount:
 unmount:
 	@echo "Unmounting Pico"
 	$(MPREMOTE) umount exec ""
+
+reset:
+	$(MAKE) unmount
+	-$(MAKE) clean
+	$(MAKE) soft-reset
+	$(MAKE) hard-reset
+	
