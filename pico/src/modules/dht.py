@@ -1,9 +1,14 @@
 import dht
 import time
+from enum import Enum
 
-class DHT11:
-    def __init__(self, pin=22, update_interval=1000):
-        self._sensor = dht.DHT11(pin)
+class SensorType(Enum):
+    DHT11 = 1
+    DHT22 = 2
+
+class DHT:
+    def __init__(self, pin=22, update_interval=1000, type=SensorType.DHT22):
+        self._sensor = dht.DHT11(pin) if type == SensorType.DHT11 else dht.DHT22(pin)
         self._update_interval = update_interval
         self._last_time_meaure = -1
 

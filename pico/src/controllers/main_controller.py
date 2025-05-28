@@ -3,7 +3,7 @@ from src.modules.wifi import Wifi
 from src.modules.led import Led
 from src.modules.screen import Screen
 from src.modules.ldr import LDR
-from src.modules.dht11 import DHT11
+from pico.src.modules.dht import DHT
 from src.modules.bmp180 import BMP180
 from src.modules.button import Button
 import machine
@@ -17,7 +17,7 @@ class MainController:
         self._wifi = Wifi(WIFI_CONFIG["ssid"], WIFI_CONFIG["password"])
         self._led = Led()
         self._ldr = LDR()
-        self._dht11 = DHT11()
+        self._dht11 = DHT()
         self._bmp180 = BMP180(self._i2c, sea_level=1016.5)
 
         print("Setup MainController complete")
