@@ -1,18 +1,17 @@
 import dht
 import time
-from enum import Enum
 
-class SensorType(Enum):
+class SensorType:
     DHT11 = 1
     DHT22 = 2
 
-class DHT:
+class Humidity:
     def __init__(self, pin=22, update_interval=1000, type=SensorType.DHT22):
         self._sensor = dht.DHT11(pin) if type == SensorType.DHT11 else dht.DHT22(pin)
         self._update_interval = update_interval
-        self._last_time_meaure = -1
+        self._last_time_measure = -1
 
-        print("Setup DHT11 complete")
+        print("Setup DHT complete")
 
     def loop(self):
         pass
@@ -28,6 +27,6 @@ class DHT:
         return self._sensor.humidity()
     
     def _measure(self):
-        if time.ticks_diff(time.ticks_ms(), self._last_time_meaure) > self._update_interval:
+        if time.ticks_diff(time.ticks_ms(), self._last_time_measure) > self._update_interval:
             self._sensor.measure()
-            self._last_time_meaure = time.ticks_ms()
+            self._last_time_measure = time.ticks_ms()

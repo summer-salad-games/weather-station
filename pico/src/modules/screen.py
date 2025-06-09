@@ -2,7 +2,7 @@ import machine
 from lib.sh1106 import SH1106_I2C
 
 class Screen:
-    def __init__(self, i2c, width=128, height=64, i2c_address=0x3c):
+    def __init__(self, i2c, width=128, height=64, i2c_address=60):
         self._width = width
         self._height = height
         self._i2c_address = i2c_address
